@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="login">Login</string>
+    <string name="login.hint.email">Email</string>
+    <string name="login.hint.password">Password</string>
+    <string name="login.error.password.too_short">The provided password is too short</string>
+    <string name="login.error.password.invalid">The provided password is invalid</string>
+    <string name="login.error.email.invalid">Invalid email address</string>
+    <string name="login.success">Login success</string>
+</resources>
