@@ -29,6 +29,8 @@ import static org.hamcrest.CoreMatchers.not;
 /**
  * Instrumentation test, which will execute on an Android device.
  *
+ * Tests for requirement 12
+ *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
@@ -36,6 +38,9 @@ public class LoginEspressoTest {
     @Rule
     public ActivityTestRule<LoginActivity> mActivityRule = new ActivityTestRule<>(LoginActivity.class);
 
+    /**
+     * Test for requirement 6
+     */
     @Test
     public void passwordIsShort() {
         onView(withId(R.id.editTextEmail)).perform(typeText("test@coursera.com"), closeSoftKeyboard());
@@ -44,6 +49,9 @@ public class LoginEspressoTest {
         onView(withId(R.id.textInputLayoutPassword)).check(matches(withError("The provided password is too short")));
     }
 
+    /**
+     * Test for requirement 7
+     */
     @Test
     public void passwordIsInvalid() {
         onView(withId(R.id.editTextEmail)).perform(typeText("test@coursera.com"), closeSoftKeyboard());
@@ -52,6 +60,9 @@ public class LoginEspressoTest {
         onView(withId(R.id.textInputLayoutPassword)).check(matches(withError("The provided password is invalid")));
     }
 
+    /**
+     * Test for requirement 8, 9
+     */
     @Test
     public void emailDoesNotHaveSign() {
         onView(withId(R.id.editTextEmail)).perform(typeText("testcoursera.com"), closeSoftKeyboard());
@@ -60,6 +71,9 @@ public class LoginEspressoTest {
         onView(withId(R.id.textInputLayoutEmail)).check(matches(withError("Invalid email address")));
     }
 
+    /**
+     * Test for requirement 8, 9
+     */
     @Test
     public void emailInvalidLocalPartLength() {
         onView(withId(R.id.editTextEmail)).perform(typeText("t@coursera.com"), closeSoftKeyboard());
@@ -68,6 +82,9 @@ public class LoginEspressoTest {
         onView(withId(R.id.textInputLayoutEmail)).check(matches(withError("Invalid email address")));
     }
 
+    /**
+     * Test for requirement 8, 9
+     */
     @Test
     public void emailInvalidDomainPart() {
         onView(withId(R.id.editTextEmail)).perform(typeText("test@a"), closeSoftKeyboard());
@@ -76,6 +93,9 @@ public class LoginEspressoTest {
         onView(withId(R.id.textInputLayoutEmail)).check(matches(withError("Invalid email address")));
     }
 
+    /**
+     * Test for requirement 8, 9
+     */
     @Test
     public void emailInvalidDomainPartLength() {
         onView(withId(R.id.editTextEmail)).perform(typeText("test@a.c"), closeSoftKeyboard());
@@ -84,6 +104,9 @@ public class LoginEspressoTest {
         onView(withId(R.id.textInputLayoutEmail)).check(matches(withError("Invalid email address")));
     }
 
+    /**
+     * Test for requirement 11
+     */
     @Test
     public void loginSuccessfully_shouldShowToast() {
         onView(withId(R.id.editTextEmail)).perform(typeText("test@coursera.com"), closeSoftKeyboard());
@@ -95,6 +118,9 @@ public class LoginEspressoTest {
                 .check(matches(isDisplayed()));
     }
 
+    /**
+     * Test for requirement 15
+     */
     @Test
     public void checkPasswordInputType() {
         onView(withId(R.id.editTextPassword)).check(matches(withPasswordInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)));
